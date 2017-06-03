@@ -1,0 +1,41 @@
+<div class="jumbotron about" style="background: #222">
+    <div class="exTab3">
+        <div class="tab-content clearfix">
+            <div class="col-sm-offset-4 col-sm-4 tab-pane active ex2" id="rejestracja">
+                <div class="input-group col-ms-4">
+                    <input id="email" type="email" class="form-control" name="email" value="email"
+                           minlength=3
+                           placeholder="Email" ng-model="emailOfUser" data-toggle="tooltip"
+                           data-placement="right" title=" Email powinien zawiecać @">
+                </div>
+                <div class="input-group col-ms-4">
+                    <input id="name" type="name" class="form-control" name="name" value="name"
+                           minlength=3
+                           placeholder="Imie" ng-model="nameOfUser" data-toggle="tooltip"
+                           data-placement="right">
+                </div>
+                <div class="input-group col-ms-4">
+                    <input id="surname" type="name" class="form-control" name="name" value="name"
+                           minlength=3
+                           placeholder="Nazwisko" ng-model="surnameOfUser" data-toggle="tooltip"
+                           data-placement="right">
+                </div>
+                <div class="input-group col-ms-4" ng-init="passwordOfUser=''">
+                    <input id="password" type="password" class="form-control" name="password"
+                           value="password"
+                           placeholder="Hasło" ng-model="passwordOfUser" data-toggle="tooltip"
+                           data-placement="right" title=" Hasło powinno być  dłuższe niż 5 znaków!">
+                </div>
+                <div><input type="checkbox" ng-model="role"> Firma</div>
+                <div class="input-group col-ms-4">
+                    <button id="submit" type="submit" class="btn btn-primary" ng-click="saveUser()">
+                        Zarejestruj się
+                    </button>
+                    <div ng-if="error" class="alert alert-warning">
+                        <strong>Warning!</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,230 @@
+<!--<div class="account backgroundT" xmlns:date="http://www.w3.org/1999/xhtml">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="row content">-->
+            <!--<div class="col-sm-10">-->
+                <!--<div class="tab-content clearfix">-->
+                    <!--<div class="tab-pane active" id="kokpit">-->
+                        <!--<h3>Kokpit</h3>-->
+                        <!--<div class="panel panel-primary">-->
+                            <!--<div class="panel-heading"></div>-->
+                            <!--<div class="chat-box-single-line">-->
+                                <!--<abbr class="timestamp">Twoje Pojazdy</abbr>-->
+                            <!--</div>-->
+                            <!--<div class="row">-->
+                                <!--<div class=" col-lg-9 col-md-8 col-sm-8">-->
+                                    <!--<div class="well col-sm-9">-->
+                                        <!--<table class="table table-hover " style="margin-left: 20px; width: 500px">-->
+                                            <!--<thead>-->
+                                            <!--<tr>-->
+                                                <!--<th>Id</th>-->
+                                                <!--<th>Marka</th>-->
+                                                <!--<th>Model</th>-->
+                                                <!--<th>Rejstracja</th>-->
+                                                <!--<th>Rok produkcji</th>-->
+                                            <!--</tr>-->
+                                            <!--</thead>-->
+                                            <!--<tbody>-->
+                                            <!--<tr ng-repeat="c in me.auto |orderBy:'marka'">-->
+
+                                                <!--<td>{{ c.id }}</td>-->
+                                                <!--<td>{{ c.marka }}</td>-->
+                                                <!--<td>{{ c.model }}</td>-->
+                                                <!--<td>{{ c.numerRejestracyjny}}</td>-->
+                                                <!--<td>{{c.rokProdukcji | date: "yyyy-MM-dd"}}</td>-->
+                                                <!--<td>-->
+                                                    <!--<button type="button" alt="{{c.id}}" ng-click="deleteCar(c.id)"-->
+                                                            <!--class="btn btn-primary btn btn-danger" data-toggle="modal">-->
+                                                        <!--<span class="glyphicon glyphicon-trash"></span>-->
+                                                    <!--</button>-->
+                                                <!--</td>-->
+                                                <!--<td>-->
+                                                    <!--<button type="button" alt="{{c.id}}" ng-click="showCar(c.id)"-->
+                                                            <!--class="btn btn-primary btn btn-inf" data-toggle="modal"-->
+                                                            <!--data-target="#exampleModalLong">-->
+                                                        <!--<span class="glyphicon glyphicon-edit"></span>-->
+                                                    <!--</button>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<h3>Dodaj auto</h3>-->
+                            <!--<form role="form">-->
+                                <!--<legend><i>Dodaj zdjęcia</i></legend>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="form-group col-sm-4">-->
+                                        <!--<div class="img-picker"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</form>-->
+
+                            <!--<form>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Marka:</label>-->
+                                    <!--<input id="markaAuto" type="text" class="form-control" name="Marka" value="Marka"-->
+                                           <!--placeholder="Marka" ng-model="markaAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Model:</label>-->
+                                    <!--<input id="modelAuto" type="text" class="form-control" name="modelAuto"-->
+                                           <!--value="Model"-->
+                                           <!--placeholder="Model" ng-model="modelAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Numer VIN:</label>-->
+                                    <!--<input id="numerVINAuto" type="text" class="form-control" name="NumerVin" value=""-->
+                                           <!--placeholder="Numer VIN" ng-model="numerVinAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Numer rejestracyjny:</label>-->
+                                    <!--<input id="numerRejAuto" type="text" class="form-control" name="numerRej" value=""-->
+                                           <!--placeholder="Numer rejestracyjny" ng-model="numerRejAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Rok produkcji:</label>-->
+                                    <!--<input id="rokProAuto" type="date" class="form-control" name="rokProAuto" value="r."-->
+                                           <!--placeholder="Rok produkcji " ng-model="rokProAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Rodzaj nadwozia:</label>-->
+                                    <!--<input id="rodzNadwoziaAuto" type="text" class="form-control"-->
+                                           <!--name="rodzNadwoziaAuto"-->
+                                           <!--value=""-->
+                                           <!--placeholder="Rodzaj nadwozia" ng-model="rodzNadwoziaAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Pojemność silnika:</label>-->
+                                    <!--<input id="pojSilnikaAuto" type="number" class="form-control" name="pojSilnikaAuto"-->
+                                           <!--value=""-->
+                                           <!--placeholder="Pojemność silnika" ng-model="pojSilnikaAuto">-->
+
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Moc silnika:</label>-->
+                                    <!--<input id="mocAuto" type="number" class="form-control" name="mocAuto" value=""-->
+                                           <!--placeholder=" Moc silnika" ng-model="mocAuto">-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label>Rodzaj paliwa:</label>-->
+                                    <!--<input id="rodzPaliwAuto" type="text" class="form-control" name="rodzajPaliwa"-->
+                                           <!--value=""-->
+                                           <!--placeholder="Rodzaj Paliwa" ng-model="rodzajPaliwAuto">-->
+
+
+                                <!--</div>-->
+
+                                <!--<button id="submit" type="submit" class="btn btn-default" ng-click="saveAuto()">Dodaj-->
+                                    <!--Auto-->
+                                <!--</button>-->
+
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-sm-12">-->
+
+
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"-->
+             <!--aria-labelledby="exampleModalLongTitle" aria-hidden="true">-->
+            <!--<div class="modal-dialog" role="document">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<h5 class="modal-title" id="exampleModalLongTitle">Edytuj</h5>-->
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                            <!--<span aria-hidden="true">&times;</span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body">-->
+
+                        <!--<form>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Id:</label>-->
+                                <!--<input id="idAutoE" type="text" class="form-control" name="idAutoE" value="IdAutoE"-->
+                                       <!--placeholder="id" ng-model="idAutoE">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Marka:</label>-->
+                                <!--<input id="MarkaE" type="text" class="form-control" name="MarkaE" value="MarkaE"-->
+                                       <!--placeholder="Marka" ng-model="markaE">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Model:</label>-->
+                                <!--<input id="ModelE" type="text" class="form-control" name="MarkaE" value="ModelE"-->
+                                       <!--placeholder="Model" ng-model="modelE">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Numer VIN:</label>-->
+                                <!--<input id="numerVinE" type="text" class="form-control" name="NumerVinE"-->
+                                       <!--value="numerVinE"-->
+                                       <!--placeholder="Numer VIN" ng-model="numerVinE">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Numer rejestracyjny:</label>-->
+                                <!--<input id="numerRejE" type="text" class="form-control" name="numerRejE"-->
+                                       <!--value="numerRejE"-->
+                                       <!--placeholder="Numer rejestracyjny" ng-model="numerRejE">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group">-->
+                                <!--<label>Rok produkcji:</label>-->
+                                <!--<input id="rokProE" type="date" class="form-control" name="rokProE"-->
+                                       <!--value="YYYY-MM-DD"-->
+                                       <!--placeholder="Rok produkcji " ng-model="rokProE ">-->
+
+                                <!--&lt;!&ndash;<input id="rokProAuto" type="date" class="form-control" name="rokProAuto" value=""&ndash;&gt;-->
+                                <!--&lt;!&ndash;placeholder="Rok produkcji " ng-model="rokProAuto">&ndash;&gt;-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Rodzaj nadwozia:</label>-->
+                                <!--<input id="rodzNadwoziaE" type="text" class="form-control"-->
+                                       <!--name="rodzNadwoziaE"-->
+                                       <!--value="rodzNadwoziaE"-->
+                                       <!--placeholder="Rodzaj nadwozia" ng-model="rodzNadwoziaE">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Pojemność silnika:</label>-->
+
+                                <!--<input id="pojSilnikE" type="number" class="form-control" name="pojSilnikaE"-->
+                                       <!--value="pojSilnikaE"-->
+                                       <!--placeholder=" Pojemność silnika" ng-model="pojSilnikaE">-->
+
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Moc silnika:</label>-->
+                                <!--<input id="mocAutoE" type="number" class="form-control" name="mocAutoE" value="mocAutoE"-->
+                                       <!--placeholder=" Moc silnika" ng-model="mocAutoE">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label>Rodzaj paliwa:</label>-->
+                                <!--<input id="rodzajPaliE" type="text" class="form-control" name="rodzajPaliE"-->
+                                       <!--value="rodzajPaliE"-->
+                                       <!--placeholder="Rodzaj Paliwa" ng-model="rodzajPaliE">-->
+
+
+                            <!--</div>-->
+
+                        <!--</form>-->
+
+
+                    <!--</div>-->
+                    <!--<div class="modal-footer">-->
+                        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>-->
+                        <!--<button type="button" class="btn btn-primary" ng-click="editCar()">Zapisz zmiany</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+    <!--</div>-->
+<!--</div>-->

@@ -1,0 +1,274 @@
+<?php
+
+	session_start();
+	
+	if (isset($_POST['email']))
+	{
+		
+		$wszystko_OK=true;
+		
+		$nick = $_POST['nick'];
+		
+		$email = $_POST['email'];
+		$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
+		
+		if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_email']="Podaj poprawny adres e-mail!";
+		}
+		
+		//Sprawdź poprawność hasła
+		$haslo1 = $_POST['haslo1'];
+		$haslo2 = $_POST['haslo2'];
+		
+		if ((strlen($haslo1)<3) || (strlen($haslo1)>20))
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_haslo']="Hasło musi posiadać od 8 do 20 znaków!";
+		}
+		
+		if ($haslo1!=$haslo2)
+		{
+			$wszystko_OK=false;
+			$_SESSION['e_haslo']="Podane hasła nie są identyczne!";
+		}	
+
+		$haslo_hash = password_hash($haslo1, PASSWORD_DEFAULT);
+		
+			
+		
+		//Zapamiętaj wprowadzone dane
+		$_SESSION['fr_nick'] = $nick;
+		$_SESSION['fr_email'] = $email;
+		$_SESSION['fr_haslo1'] = $haslo1;
+		$_SESSION['fr_haslo2'] = $haslo2;
+		
+		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+		
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+
+			if($polaczenie==true){
+				echo "Sukces połączenia";
+			}
+			else{
+				echo "-";
+			}
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+				
+					
+					
+					if ($polaczenie->query("INSERT INTO account VALUES ('2', '$nick', '$haslo_hash', '$email', 3)"))
+					{
+						$_SESSION['udanarejestracja']=true;
+						header('Location: index.php');
+					}
+					else
+					{
+						throw new Exception($polaczenie->error);
+					}
+					
+				}
+				
+				$polaczenie->close();
+			}
+			
+		
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! </span>';
+			echo '<br />Informacja developerska: '.$e;
+		}
+		
+	}
+	
+	
+?>
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejestracja</title>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+<body>
+ 
+ 
+<div class="row">
+<div class="large-12 columns">
+<div class="nav-bar right">
+<ul class="button-group">
+<li><a href="ads.php" class="button">Ogłoszenia</a></li>
+<li><a href="addAd.php" class="button">Dodaj ogłoszenie</a></li>
+<li><a href="register.php" class="button">Logowanie/rejestracja</a></li>
+</ul>
+</div>
+<h1>Spec <small>- to jego potrzebujesz</small></h1>
+<hr/>
+</div>
+</div>
+ 
+ 
+<div class="row">
+ 
+<div class="large-9 columns" role="content">
+
+
+
+
+
+
+
+<form method="post">
+	
+		Login: <br /> <input type="text" value="<?php
+			if (isset($_SESSION['fr_nick']))
+			{
+				echo $_SESSION['fr_nick'];
+				unset($_SESSION['fr_nick']);
+			}
+		?>" name="nick" />
+		
+		<?php
+			if (isset($_SESSION['e_nick']))
+			{
+				echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
+				unset($_SESSION['e_nick']);
+			}
+		?>
+		
+		E-mail: <br /> <input type="text" value="<?php
+			if (isset($_SESSION['fr_email']))
+			{
+				echo $_SESSION['fr_email'];
+				unset($_SESSION['fr_email']);
+			}
+		?>" name="email" />
+		
+		<?php
+			if (isset($_SESSION['e_email']))
+			{
+				echo '<div class="error">'.$_SESSION['e_email'].'</div>';
+				unset($_SESSION['e_email']);
+			}
+		?>
+		
+		Twoje hasło: <br /> <input type="password"  value="<?php
+			if (isset($_SESSION['fr_haslo1']))
+			{
+				echo $_SESSION['fr_haslo1'];
+				unset($_SESSION['fr_haslo1']);
+			}
+		?>" name="haslo1" />
+		
+		<?php
+			if (isset($_SESSION['e_haslo']))
+			{
+				echo '<div class="error">'.$_SESSION['e_haslo'].'</div>';
+				unset($_SESSION['e_haslo']);
+			}
+		?>		
+		
+		Powtórz hasło: <br /> <input type="password" value="<?php
+			if (isset($_SESSION['fr_haslo2']))
+			{
+				echo $_SESSION['fr_haslo2'];
+				unset($_SESSION['fr_haslo2']);
+			}
+		?>" name="haslo2" />
+		
+		
+	
+		
+		<br />
+		
+		<input type="submit" value="Zarejestruj się" />
+		
+	</form>
+
+
+
+
+
+
+
+
+
+</div>
+ 
+ 
+<aside class="large-3 columns">
+<h5>Kategorie</h5>
+<ul class="side-nav">
+<li><a href="#">hydraulik</a></li>
+<li><a href="#">elektryk</a></li>
+<li><a href="#">tynkarz</a></li>
+<li><a href="#">murarz</a></li>
+<li><a href="#">glazurnik</a></li>
+<li><a href="#">cieśla</a></li>
+<li><a href="#">dekarz</a></li>
+</ul>
+<div class="panel">
+<h5>Informacje</h5>
+<p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
+<a href="#">Czytaj więcej &rarr;</a>
+</div>
+</aside>
+ 
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+<footer class="row">
+<div class="large-12 columns">
+<hr/>
+<div class="row">
+<div class="large-6 columns">
+</div>
+<div class="large-6 columns">
+<ul class="inline-list right">
+<li><a href="#">Link 1</a></li>
+<li><a href="#">Link 2</a></li>
+<li><a href="#">Link 3</a></li>
+<li><a href="#">Link 4</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+
+<link href="css/banner.css" rel="stylesheet" />
+
+
+#banner{
+width:934px;
+height:2px;
+display:block;
+float:center;
+image: url(img/banner.jpg);
+background-repeat:no-repeat; background-position:top;
+overflow:hidden;
+}

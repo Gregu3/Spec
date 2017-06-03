@@ -1,0 +1,32 @@
+<div class="tabcustom">
+    <form>
+
+        <p><i>Dodaj zdjęcie</i></p>
+        <div class="form-group col-sm-4">
+            <div class="img-picker"></div>
+        </div>
+        <br/>
+        <p>Nazwa usługi:</p>
+        <input type="text" class="form-control" placeholder="Nazwa usługi" ng-model="title">
+        <p>Opis usługi:</p>
+        <textarea name="description" cols="50" class="form-control" rows="10" ng-model="description"></textarea>
+        <br/>
+        <p>Kategoria:</p>
+
+        <select class="form-control btn-default" ng-model="category" ng-init="c = categoryList[0]">
+            <option ng-repeat="c in categoryList" value="{{c}}">{{c}}</option>
+        </select>
+        <div ng-repeat="c in categoryList"> <p>{{c.name}}</p></div>
+        <br/>
+        <br/><br/>
+
+
+        <p>Cena:</p><input type="number" class="form-control" ng-model="price"/>
+        <br/>
+
+        <p align="center"><br/>
+            <button type="button" class="btn btn-primary" ng-click="addAd()">Wstaw ogłoszenie</button>
+            <button type="reset" class="btn btn-default">Wyczyść</button>
+        </p>
+    </form>
+</div>
