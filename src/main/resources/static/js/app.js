@@ -19,6 +19,18 @@ spec.config(function ($routeProvider) {
             templateUrl: 'views/addAd.html',
             controller: 'AddAdController'
         })
+        .when('/contact', {
+            templateUrl: 'views/contact.html',
+            controller: 'ContactController'
+        })
+        .when('/selectedCategory', {
+            templateUrl: 'views/selectedCategory.html',
+            controller: 'SelectedCategoryController'
+        })
+        .when('/ad', {
+            templateUrl: 'views/ad.html',
+            controller: 'SelectedCategoryController'
+        })
         .otherwise({redirectTo: '/'});
 });
 

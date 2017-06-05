@@ -155,16 +155,8 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li>
-                <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Strona główna</a>
-            </li>
-            <li>
-                <a href="views/register.html"><i class="fa fa-fw fa-dashboard"></i>Rejestracja</a>
-            </li>
-            <li>
-                <a href="login.html"><i class="fa fa-fw fa-dashboard"></i>Logowanie</a>
-            </li>
-            <li>
+
+                       <li>
                 <a href="#/addAd"><i class="fa fa-fw fa-dashboard"></i>Dodaj ogłoszenie</a>
             </li>
             <li>
@@ -175,42 +167,39 @@
                         class="fa fa-fw fa-arrows-v"></i> Kategorie ofert <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="test1.html">Murarz</a>
+                        <a href="#/selectedCategory">Murarz</a>
                     </li>
                     <li>
-                        <a href="test1.html">Hydraulik</a>
+                        <a href="#/selectedCategory">Hydraulik</a>
                     </li>
                     <li>
-                        <a href="test1.html">Elektryk</a>
+                        <a href="#/selectedCategory">Elektryk</a>
                     </li>
                     <li>
-                        <a href="test1.html">Cieśla</a>
+                        <a href="#/selectedCategory">Cieśla</a>
                     </li>
                     <li>
-                        <a href="test1.html">Glazurnik</a>
+                        <a href="#/selectedCategory">Glazurnik</a>
                     </li>
                     <li>
-                        <a href="test1.html">Tynkarz</a>
+                        <a href="#/selectedCategory">Tynkarz</a>
                     </li>
                     <li>
-                        <a href="test1.html">Gazownik</a>
+                        <a href="#/selectedCategory">Gazownik</a>
                     </li>
                     <li>
-                        <a href="test1.html">Stolarz</a>
+                        <a href="#/selectedCategory">Stolarz</a>
                     </li>
                     <li>
-                        <a href="test1.html">Architekt</a>
+                        <a href="#/selectedCategory">Architekt</a>
                     </li>
                     <li>
-                        <a href="test1.html">Szklarz</a>
+                        <a href="#/selectedCategory">Szklarz</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> O nas </a>
-            </li>
-            <li>
-                <a href="kontakt.html"><i class="fa fa-fw fa-dashboard"></i>Kontakt</a>
+                <a href="#/contact"><i class="fa fa-fw fa-dashboard"></i>Kontakt</a>
             </li>
         </ul>
     </div>
@@ -218,5 +207,17 @@
 
 </nav>
 <div ng-view></div>
+
+<div class="col-sm-offset-2 " >
+
+<footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <p>Copyright &copy; Grzegorz Pliś 2017</p>
+        </div>
+    </div>
+</div>
+</footer>
 </body>
 </html>
