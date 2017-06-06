@@ -31,6 +31,10 @@ spec.config(function ($routeProvider) {
             templateUrl: 'views/ad.html',
             controller: 'SelectedCategoryController'
         })
+        .when('/profile', {
+            templateUrl: 'views/profile.html',
+            controller: 'UserController'
+        })
         .otherwise({redirectTo: '/'});
 });
 

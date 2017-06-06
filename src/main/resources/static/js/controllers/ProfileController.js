@@ -1,7 +1,6 @@
-angular.module('spec').controller('NavbarController', function ($http, $rootScope, $scope, $resource, $localStorage, $window, LoginService, $location) {
+angular.module('spec').controller('ProfileController', function ($http, $rootScope, $scope, $resource, $localStorage, $window, LoginService, $location) {
     $rootScope.email;
     $rootScope.admin;
-    $scope.message = "NavbarController";
 
     $scope.Refresh = function () {
         $window.location.reload();
@@ -14,7 +13,6 @@ angular.module('spec').controller('NavbarController', function ($http, $rootScop
                 if (response.status == 200) {
                     $rootScope.email = response.data.email; //rootScope umozliwia wyswietlanei w dowolnym miejscu
                     $rootScope.name = response.data.firstName;
-                    $rootScope.lastName = response.data.lastName;
                     $rootScope.role = response.data.role;
                     $rootScope.id = response.data.id;
                     // console.log("navbar  name " + $localStorage.firstName + " " + $localStorage.role + " " + $rootScope.id);

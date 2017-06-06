@@ -78,12 +78,20 @@
             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false"> {{email}} <span class="caret"></span></a>
 
+            <ul class="dropdown-menu">
+                <li><a href="#/profile"><i class="fa fa-fw fa-user"></i>Profil</a></li>
+                <li ng-if="email"><a href="#/logout" ng-click="removeUserFromStorage()"><i class="fa fa-fw fa-power-off"></i> Wyloguj </a></li>
+
+            </ul>
+
         </li>
-        <li ng-if="!email"><a href="#/login">Zaloguj</a></li>
-        <li ng-if="!email"><a href="#/register">Zarejestruj</a></li>
+
+
+
+        <li ng-if="!email"><a href="#/login"><i class="fa fa-caret-right"></i> Zaloguj</a></li>
+        <li ng-if="!email"><a href="#/register"><i class="fa fa-plus-square-o "></i> Zarejestruj</a></li>
 
         <!--<li ng-if="email"><a>{{email}}</a></li>-->
-        <li ng-if="email"><a href="#/logout" ng-click="removeUserFromStorage()"> Wyloguj </a></li>
     </ul>
 
     <ul class="dropdown-menu message-dropdown">
@@ -157,14 +165,14 @@
         <ul class="nav navbar-nav side-nav">
 
                        <li>
-                <a href="#/addAd"><i class="fa fa-fw fa-dashboard"></i>Dodaj ogłoszenie</a>
+                <a href="#/addAd"><i class="fa fa-plus-square-o "></i></i> Dodaj ogłoszenie</a>
             </li>
             <li>
 
 
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
-                        class="fa fa-fw fa-arrows-v"></i> Kategorie ofert <i class="fa fa-fw fa-caret-down"></i></a>
+                        class="fa fa-fw fa-arrows-v"></i>Kategorie ofert <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
                         <a href="#/selectedCategory">Murarz</a>
@@ -199,7 +207,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#/contact"><i class="fa fa-fw fa-dashboard"></i>Kontakt</a>
+                <a href="#/contact"><i class="fa fa-fw fa-dashboard"></i> Kontakt</a>
             </li>
         </ul>
     </div>

@@ -7,9 +7,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-/**
- * Created by Grześ on 2017-04-03.
- */
 @Entity
 public class User {
 
