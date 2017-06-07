@@ -19,6 +19,10 @@ spec.config(function ($routeProvider) {
             templateUrl: 'views/addAd.html',
             controller: 'AddAdController'
         })
+        .when('/addAd/:id', {
+            templateUrl: 'views/addAd.html',
+            controller: 'AddAdController'
+        })
         .when('/contact', {
             templateUrl: 'views/contact.html',
             controller: 'ContactController'
@@ -34,6 +38,10 @@ spec.config(function ($routeProvider) {
         .when('/profile', {
             templateUrl: 'views/profile.html',
             controller: 'UserController'
+        })
+        .when('/all', {
+            templateUrl: 'views/allAdvs.html',
+            controller: 'AdvController'
         })
         .otherwise({redirectTo: '/'});
 });

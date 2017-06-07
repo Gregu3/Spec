@@ -1,26 +1,46 @@
-angular.module('spec').controller('AddAdController', function ($scope, AdvertisementService) {
+angular.module('spec').controller('AddAdController', function ($scope, AdvertisementService, $routeParams) {
     $scope.message = 'Hello from AddAdController';
     $scope.gallery = [];
     $scope.categoryList = AdvertisementService.getCategories();
     console.log($scope.categoryList);
+    $scope.advertisement = {};
 
-    $scope.addAd = function () {
-        var title = $scope.title;
-        var price = $scope.price;
-        var category = $scope.category;
-        var description = $scope.description;
-        var image = $scope.gallery[0].replace('data:image/jpeg;base64,', '');
-
-        var ad = {
-            title: title,
-            price: price,
-            category: category,
-            description: description,
-            image: image
-        };
+    var findOne = function (id) {
 
         AdvertisementService
-            .addAd(ad)
+            .findOne(id)
+            .then(function (response) {
+                console.log(response.data);
+                if (response.status == 200) {
+                    $scope.advertisement = response.data;
+                    alert("dodało sie");
+                } else {
+                    alert("Wystąpił problem przy dodawaniu ogłoszenia.\nSpróbuj ponownie za chwilę za utrudnienia przepraszamy");
+                }
+            });
+    };
+
+    if ($routeParams.id != undefined) {
+        findOne($routeParams.id);
+    }
+
+    $scope.addAd = function () {
+        // var title = $scope.title;
+        // var price = $scope.price;
+        // var category = $scope.category;
+        // var description = $scope.description;
+        // var image = $scope.gallery[0].replace('data:image/jpeg;base64,', '');
+
+        // var ad = {
+        //     title: title,
+        //     price: price,
+        //     category: category,
+        //     description: description,
+        //     image: image
+        // };
+
+        AdvertisementService
+            .addAd($scope.advertisement)
             .then(function (response) {
                 if (response.status == 200) {
                     // $scope.advertisement = response.data;
@@ -38,7 +58,7 @@ angular.module('spec').controller('AddAdController', function ($scope, Advertise
                     //                         $scope.myAd = response.data;
                     //                     }
                     //                 });
-                    alert("dodało sie");
+                    alert("Powodzenie");
                 } else {
                     alert("Wystąpił problem przy dodawaniu ogłoszenia.\nSpróbuj ponownie za chwilę za utrudnienia przepraszamy");
                 }

@@ -2,6 +2,7 @@ package com.grzegorz.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,19 +10,18 @@ import java.util.List;
  */
 @Entity
 public class Advertisement {
-    @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
     private String title;
     private double price;
     private String description;
-    @Lob
+
     private  byte[] image;
 
-    @OneToMany
-    List<Category> category;
 
+    List<Category> category = new ArrayList<>();
+
+    @Lob
     public byte[] getImage() {
         return image;
     }
@@ -30,6 +30,9 @@ public class Advertisement {
         this.image = image;
     }
 
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -60,5 +63,15 @@ public class Advertisement {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "adv_id")
+    public List<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<Category> category) {
+        this.category = category;
     }
 }

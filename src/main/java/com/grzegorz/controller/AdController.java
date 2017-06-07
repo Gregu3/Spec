@@ -1,10 +1,13 @@
 package com.grzegorz.controller;
 
 
+import com.grzegorz.config.Response;
 import com.grzegorz.model.Advertisement;
 import com.grzegorz.model.Category;
 import com.grzegorz.repository.AdRepository;
+import com.grzegorz.repository.AdService;
 import com.grzegorz.repository.CategoriesRepository;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +21,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("ad")
 public class AdController {
+
+    @Autowired
+    AdService adService;
 
     @Autowired
     AdRepository serviceRepository;
@@ -44,11 +50,11 @@ public class AdController {
     }
 
     @Transactional
-    @PostMapping("add")
-    public ResponseEntity<Advertisement> postService(@RequestBody Advertisement Service) {
-        serviceRepository.save(Service);
-        if ((Service.getId() != -1)) {
-            return ResponseEntity.ok(Service);
+    @PostMapping("/add")
+    public ResponseEntity<Advertisement> postService(@RequestBody Advertisement advertisement) {
+        serviceRepository.save(advertisement);
+        if ((advertisement.getId() != -1)) {
+            return ResponseEntity.ok(advertisement);
         }
         return new ResponseEntity<Advertisement>(HttpStatus.BAD_REQUEST);
     }
@@ -93,6 +99,37 @@ public class AdController {
         serviceRepository.update(Service.getId(), Service);
         return new ResponseEntity<Advertisement>(Service, new HttpHeaders(), HttpStatus.OK);
     }
+
+    @GetMapping("/adv/all")
+    public ResponseEntity<?> findAll() {
+        List<Advertisement> all = adService.findAll();
+        if (!all.isEmpty()) {
+            return ResponseEntity.ok(all);
+        } else {
+            return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @GetMapping("/adv/id/{id}")
+    public ResponseEntity<?> findOne(@PathVariable long id) {
+        Optional<Advertisement> one = adService.findOne(id);
+        if (one.isPresent()) {
+            return ResponseEntity.ok(one.get());
+        } else {
+            return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PostMapping("/adv/save")
+    public ResponseEntity<?> save(@RequestBody Advertisement advertisement) {
+        adService.save(advertisement);
+        if (advertisement.getId() != 0) {
+            return ResponseEntity.ok(advertisement);
+        } else {
+            return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+        }
+    }
+
 }
 
 
