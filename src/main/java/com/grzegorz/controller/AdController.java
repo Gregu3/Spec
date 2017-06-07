@@ -8,6 +8,7 @@ import com.grzegorz.repository.AdRepository;
 import com.grzegorz.repository.AdService;
 import com.grzegorz.repository.CategoriesRepository;
 import com.sun.org.apache.regexp.internal.RE;
+import org.hibernate.boot.jaxb.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -123,10 +124,13 @@ public class AdController {
     @PostMapping("/adv/save")
     public ResponseEntity<?> save(@RequestBody Advertisement advertisement) {
         adService.save(advertisement);
+        System.out.println(advertisement.toString() +" przed if");
         if (advertisement.getId() != 0) {
+            System.out.println(advertisement.toString() + " if");
             return ResponseEntity.ok(advertisement);
         } else {
-            return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+            System.out.println(advertisement.toString() + " else");
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
     }
 

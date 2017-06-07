@@ -1,4 +1,4 @@
-angular.module('spec').controller('AddAdController', function ($scope, AdvertisementService, $routeParams) {
+angular.module('spec').controller('AddAdController', function ($scope, AdvertisementService, $routeParams, $rootScope) {
     $scope.message = 'Hello from AddAdController';
     $scope.gallery = [];
     $scope.categoryList = AdvertisementService.getCategories();
@@ -6,14 +6,14 @@ angular.module('spec').controller('AddAdController', function ($scope, Advertise
     $scope.advertisement = {};
 
     var findOne = function (id) {
-
         AdvertisementService
             .findOne(id)
             .then(function (response) {
                 console.log(response.data);
                 if (response.status == 200) {
                     $scope.advertisement = response.data;
-                    alert("dodało sie");
+
+                    alert("Powodzenie");
                 } else {
                     alert("Wystąpił problem przy dodawaniu ogłoszenia.\nSpróbuj ponownie za chwilę za utrudnienia przepraszamy");
                 }
@@ -25,26 +25,20 @@ angular.module('spec').controller('AddAdController', function ($scope, Advertise
     }
 
     $scope.addAd = function () {
-        // var title = $scope.title;
-        // var price = $scope.price;
-        // var category = $scope.category;
-        // var description = $scope.description;
-        // var image = $scope.gallery[0].replace('data:image/jpeg;base64,', '');
-
-        // var ad = {
-        //     title: title,
-        //     price: price,
-        //     category: category,
-        //     description: description,
-        //     image: image
-        // };
-
+        // $scope.advertisement.image = $scope.gallery[0].replace('data:image/jpeg;base64,', '');
+        console.log("komentarz" + $scope.advertisement);
+        $scope.advertisement.category = 'Banan';
+        console.log($scope.advertisement);
         AdvertisementService
             .addAd($scope.advertisement)
             .then(function (response) {
+                console.log("komentarzpo dodamie" + $scope.advertisement);
+
                 if (response.status == 200) {
-                    // $scope.advertisement = response.data;
-                    // $scope.loginUser.advertisements.push(response.data);
+                    console.log("komentarz w ifie jeśli status OK" + $scope.advertisement);
+                    console.log($scope.advertisement);
+                    $scope.advertisement = response.data;
+                    //$rootScope.currentUser.advertisement.push(response.data);
                     // UserAdsService.sendAdvertisement(response.data);
                     // UserService
                     //     .editUser($scope.loginUser)

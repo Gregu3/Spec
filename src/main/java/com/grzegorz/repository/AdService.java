@@ -19,7 +19,6 @@ public class AdService {
     @Autowired
     private AdvRepository advRepository;
 
-
     public void save(Advertisement advertisement) {
         advRepository.save(advertisement);
     }
@@ -41,5 +40,4 @@ public class AdService {
             advRepository.delete(id);
         }
     }
-
 }

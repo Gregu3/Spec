@@ -2,6 +2,7 @@ angular.module('spec').service('AdvertisementService', function ($http) {
 
     this.addAd = function (ad) {
         var url = '/ad/adv/save/';
+        console.log(ad);
         return $http({
             method: "POST",
             url: url,
@@ -37,30 +38,30 @@ angular.module('spec').service('AdvertisementService', function ($http) {
         });
     };
 
+    //
+    // this.deleteCar = function (id) {
+    //     return $http({
+    //         method: 'DELETE',
+    //         url: '/auto/delete/id/' + id
+    //     }).then(function successCallback(response) {
+    //         alert(response.status);
+    //         return response;
+    //     }, function errorCallback(response) {
+    //         return response.status;
+    //     });
+    // };
 
-    this.deleteCar = function (id) {
-        return $http({
-            method: 'DELETE',
-            url: '/auto/delete/id/' + id
-        }).then(function successCallback(response) {
-            alert(response.status);
-            return response;
-        }, function errorCallback(response) {
-            return response.status;
-        });
-    };
-
-    this.updateCar = function (car) {
-        return $http({
-            method: "POST",
-            url: '/auto/update/',
-            data: car
-        }).then(function successCallback(response) {
-            return response;
-        }, function errorCallback(response) {
-            return response.status;
-        });
-    };
+    // this.updateCar = function (car) {
+    //     return $http({
+    //         method: "POST",
+    //         url: '/auto/update/',
+    //         data: car
+    //     }).then(function successCallback(response) {
+    //         return response;
+    //     }, function errorCallback(response) {
+    //         return response.status;
+    //     });
+    // };
 
     this.findAll = function () {
         var url = 'ad/adv/all';

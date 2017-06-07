@@ -12,9 +12,19 @@
 
         <p>Kategoria:</p>
 
-        <select class="form-control btn-default" ng-model="advertisement.category" ng-init="c = categoryList[0]">
-            <option ng-repeat="c in categoryList" value="{{c}}">{{c}}</option>
-        </select>
+<!--        <select class="form-control btn-default" ng-model="advertisement.category">
+            <option ng-repeat="c in categoryList" value="{{c}}">{{c.name}}</option>
+        </select>-->
+
+        <div class="panel-heading"><b><i>Wybierz kategorie ogłoszenia</i></b></div>
+        <div class="panel-body">
+            <label ng-repeat="f in categoryList">
+                <input type="checkbox" value="{{f}}" name="{{f.id_feature}}" ng-model="advertisement.category[]">
+                {{f.name}}
+                <br/>
+            </label>
+        </div>
+
         <div ng-repeat="c in categoryList"><p>{{c.name}}</p></div>
         <br>
 
